@@ -1,3 +1,4 @@
+/*
 p{
    color: green;
    background-color: black;
@@ -5,4 +6,49 @@ p{
 body{
    background-color: fuchsia;
    font-size: 15px;
+}
+style para index.html e index2.html;
+*/
+p{
+   font-family: Arial, Helvetica, sans-serif;
+   text-align: justify;
+   line-height: 25px;   /*tamanho de altura de cada linha*/
+   letter-spacing: 2px; /*tamanho do espaço entre cada linha*/
+   word-spacing: 3px;   /*tamanho do espaço entre cada palavra*/
+   text-indent: 30px;   /*tamanho da margem da primeira linha do texto*/
+}
+h1{
+   font-family: Arial, Helvetica, sans-serif;
+   text-align: center;
+   font-size: 40px;
+   background-color: #c0c0c0;
+}
+h2{
+   border-bottom: 2px solid #333333;
+   border-top: 1px solid #d61818;
+}
+figure{
+   background-color: #f2eded;
+   border: 1px solid #ccc;
+   text-align: center;
+}
+figcaption {
+   color: #d61818;
+   font-style: normal;
+}
+#logo{
+   float: left;
+   margin: 0 0 10px 10px;
+   width: 150px;
+   height: 90px;
+}
+footer{
+   color: #777;
+   margin: 30px 0;
+   padding: 30px 0;
+}
+footer img{
+   margin-right: 30px;
+   vertical-align: middle;
+   width: 94px;
 }
