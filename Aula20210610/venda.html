@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Aula de HTML com Bootstrap</title>
+   <link rel="stylesheet" href="css/bootstrap.css">
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+           integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+           crossorigin="anonymous"></script>
+   <script type="text/javascript" src="js/bootstrap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
+   integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 
+   crossorigin="anonymous"></script>
+</head>
+<body>
+   <div class="jumbotron">
+      <h1 class="display-4">Obrigado por escolher seu produto!!!</h1>
+      <p class="lead">Nossa loja agrade a preferência!<br>Logo você estará recebendo seu produto.</p>
+      <hr class="my-4">
+      <!-- aki-->
+      <div class="btn-group">
+         <button type="button" class="btn btn-danger">Action</button>
+         <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <span class="sr-only">Toggle Dropdown</span>
+         </button>
+         <div class="dropdown-menu">
+           <a class="dropdown-item" href="#">Action</a>
+           <a class="dropdown-item" href="#">Another action</a>
+           <a class="dropdown-item" href="#">Something else here</a>
+           <div class="dropdown-divider"></div>
+           <a class="dropdown-item" href="#">Separated link</a>
+         </div>
+       </div>
+    </div>
+    <div class="container">
+       <div class="card border-success mb-3">
+          <div class="card-header">Sua compra:</div>
+          <div class="card-body">
+            <img src="img/macbook.jpg"
+                 alt="MacBook"
+                 width="350px"
+                 height="350px"
+                 class="img-thumbnail mb-3">
+            <dl>               
+               <dt>Produto:</dt>
+               <dd>MacBook Pro</dd>
+               <dt>Detalhes:</dt>
+               <dd>Processador i7; Memória 16Gb; HD 500Gb SSD</dd>
+               <dt>Preço:</dt>
+               <dd>R$12.000,00</dd>
+            </dl>
+          </div>
+       </div>
+    </div>
+</body>
+</html>
