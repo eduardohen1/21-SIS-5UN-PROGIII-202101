@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Formulário</title>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+         rel="stylesheet" 
+         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" 
+         crossorigin="anonymous">
+   <script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+   <div class="container-fluid">
+      <form name="formulario" id="formulario" method="POST" onsubmit="return validarFormulario()">
+         <div class="mb-3">
+            <label for="txtNome" class="form-label">Nome:</label>
+            <input type="text" class="form-control" id="txtNome" placeholder="Digite seu nome">           
+         </div>
+         <div class="mb-3">
+           <label for="txtEmail" class="form-label">E-mail:</label>
+           <input type="email" class="form-control" id="txtEmail" placeholder="admin@admin.com">           
+         </div>
+         <div class="mb-3">
+           <label for="txtSenha" class="form-label">Senha:</label>
+           <input type="password" class="form-control" id="txtSenha">
+         </div>
+         <div class="mb-3">
+            <div class="form-group form-check">
+               <div class="custom-control custom-radio">
+                  <input type="radio" name="idade" id="idade1" value="1" class="custom-control-input" required>
+                  <label for="idade1" class="custom-control-label">Até 20 anos</label>
+               </div>
+               <div class="custom-control custom-radio">
+                  <input type="radio" name="idade" id="idade2" value="2" class="custom-control-input" required>
+                  <label for="idade2" class="custom-control-label">De 21 à 30 anos</label>
+               </div>
+               <div class="custom-control custom-radio">
+                  <input type="radio" name="idade" id="idade3" value="3" class="custom-control-input" required>
+                  <label for="idade3" class="custom-control-label">Acima de 31 anos</label>
+               </div>
+            </div>
+         </div>
+         <div class="mb-3 form-check">
+           <input type="checkbox" class="form-check-input" id="chkConcorda">
+           <label class="form-check-label" for="chkConcorda">Concorda com nossos termos?</label>
+         </div>
+         <button type="submit" class="btn btn-primary">Enviar</button>
+       </form>
+   </div>
+</body>
+</html>
