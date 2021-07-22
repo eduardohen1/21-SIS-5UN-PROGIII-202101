@@ -11,28 +11,8 @@
 </head>
 <body>
     <?php
-        //$_GET pegar parametro da URL
-        //$user     = $_GET["user"];
-        //$password = $_GET["password"];
-
-        //conectar em banco de dados:
-        $conexao = mysqli_connect(
-                        "localhost",
-                        "root",
-                        "123456",
-                        "alunos"
-                    );
-        if(!$conexao){
-            echo "
-            <div class='alert alert-danger' role='alert'>
-                <h4 class='alert-heading'>Erro ao entrar no sistema!</h4>
-                <p>Não foi possível conectar no banco de dados!</p>
-                <hr>
-                <p class='mb-0'><a href='index.php'>Voltar.</a></p>
-            </div>
-            ";
-            exit;
-        }
+        require_once("variaveis.php");
+        require_once("conexao.php");
 
         //$_POST pegar parametro do form enviado pelo POST
         $user     = $_POST["txtEmail"];
@@ -42,12 +22,16 @@
         $validou = false;
         $erro = "";
         $nome = "";
-        $sql = "SELECT email, senha, nome FROM usuarios WHERE email = '$user'";
-        $resposta = mysqli_query($conexao, $sql);
+        $id_usuarios = 0;
+        $tipo_acesso = 1;
+        $sql = "SELECT email, senha, nome, idusuarios, tipoacesso FROM usuarios WHERE email = '$user'";
+        $resposta = mysqli_query($conexao_bd, $sql);
         if($rows=mysqli_fetch_row($resposta)){
             if($password == $rows[1]){
-                $validou = true;
-                $nome = $rows[2];
+                $validou     = true;
+                $nome        = $rows[2];
+                $id_usuarios = $rows[3];
+                $tipo_acesso = $rows[4];
             }
             else{
                 $erro = "Senha errada.";
@@ -55,10 +39,14 @@
         }else{
             $erro = "Endereço de e-mail não cadastrado.";
         }
+        mysqli_close($conexao_bd);
 
         if($validou){
+            session_start();
+            $_SESSION["id_usuario"]  = $id_usuarios;
+            $_SESSION["tipo_acesso"] = $tipo_acesso;
             //echo "<h1>Olá $nome!!</h1>";
-            header("location:admin.php?nome=$nome");
+            header("location:admin.php");
         }else{            
             echo "
             <div class='alert alert-danger' role='alert'>

@@ -21,7 +21,7 @@
     if($rows=mysqli_fetch_row($resp)){
         $nome_usuario = $rows[0];
     }
-    mysqli_close($conexao_bd);
+    
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -35,7 +35,7 @@
     <link rel="shortcut icon" href="img/studentmeets_4873.ico" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+<nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="img/studentmeets_4873.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
@@ -47,10 +47,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 50px;">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" aria-current="page" href="admin.php">Home</a>
                     </li>
                     <?php
-                        $mnuCadastro   = "<li class='nav-item'><a class='nav-link' href='usuarios_list.php'>Cadastro de usuários</a></li>";
+                        $mnuCadastro   = "<li class='nav-item'><a class='nav-link active' href='#'>Cadastro de usuários</a></li>";
                         $mnuCadastroAl = "<li class='nav-item'><a class='nav-link' href='#'>Cadastro de alunos</a></li>";
                         $mnuConsultas  = "<li class='nav-item'><a class='nav-link' href='#'>Consultas</a></li>";
                         $mnuRelatorios = "<li class='nav-item'><a class='nav-link' href='#'>Relatórios</a></li>";
@@ -73,10 +73,47 @@
             </div>
         </div>
     </nav>
-    <?php
-        $nome = $nome_usuario;//$_GET["nome"];
-        echo "<hr><h1>Bem vindo $nome!!!!</h1><hr>";
+    <h1>Listagem de usuários:</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Tipo de acesso</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $sql = "SELECT idusuarios, nome, email, tipoacesso FROM usuarios ORDER BY nome";
+            $resp = mysqli_query($conexao_bd, $sql);
+            while($rows=mysqli_fetch_row($resp)){
+                echo "<tr>";
+                echo "<th scope='row'>$rows[0]</th>";
+                echo "<td>$rows[1]</td>";
+                echo "<td>$rows[2]</td>";
+                switch($rows[3]){
+                    case 0: 
+                        echo "<td>Administrador</td>";
+                        break;
+                    case 1:
+                        echo "<td>Consultas</td>";
+                        break;
+                    case 2:
+                        echo "<td>Relatórios</td>";
+                        break;
+                }                
+                echo "<td>
+                         <a class='btn btn-primary' href='#' role='button'>Editar</a>&nbsp;
+                         <a class='btn btn-danger'  href='#' role='button'>Excluir</a>
+                      </td>";
+                echo "</tr>";
+            }
+            mysqli_close($conexao_bd);
+            ?>
+        </tbody>
+    </table>
 
-    ?>
 </body>
 </html>
