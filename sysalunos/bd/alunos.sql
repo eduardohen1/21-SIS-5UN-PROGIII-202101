@@ -33,6 +33,7 @@ CREATE TABLE `usuarios` (
   `senha` varchar(30) NOT NULL,
   `dica` varchar(30) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `tipoacesso` int(10) unsigned NOT NULL default '1' COMMENT '0 Admin; 1 Usuario consulta; 2 usuario relatorio',
   PRIMARY KEY  (`idusuarios`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -41,10 +42,10 @@ CREATE TABLE `usuarios` (
 --
 
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` (`idusuarios`,`nome`,`login`,`senha`,`dica`,`email`) VALUES 
- (1,'Eduardo Henrique','eduardo','123456','123456','eduardo.marques@uemg.br'),
- (2,'A Fulano 1','fulano1','123456','123456','a@a.com'),
- (3,'Fulano 2','fulano2','123456','123456','b@b.com');
+INSERT INTO `usuarios` (`idusuarios`,`nome`,`login`,`senha`,`dica`,`email`,`tipoacesso`) VALUES 
+ (1,'Eduardo Henrique','eduardo','123456','123456','eduardo.marques@uemg.br',0),
+ (2,'A Fulano 1','fulano1','123456','123456','a@a.com',1),
+ (3,'Fulano 2','fulano2','123456','123456','b@b.com',2);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 
