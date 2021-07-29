@@ -45,7 +45,7 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`idusuarios`,`nome`,`login`,`senha`,`dica`,`email`,`tipoacesso`) VALUES 
  (1,'Eduardo Henrique','eduardo','123456','123456','eduardo.marques@uemg.br',0),
  (2,'A Fulano 1','fulano1','123456','123456','a@a.com',1),
- (3,'Fulano 2','fulano2','123456','123456','b@b.com',2);
+ (4,'Ciclano Jobs','','456123','456123','c@c.com',2);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 

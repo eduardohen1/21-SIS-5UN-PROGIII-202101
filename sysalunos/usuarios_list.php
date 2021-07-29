@@ -29,9 +29,12 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de gerenciamento de alunos</title>
+    <title>Sistema de gerenciamento de alunos</title>    
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js" ></script>
+    <script src="js/jquery.min.js" ></script>
+    <link href="css/sweetalert2.css" rel="stylesheet">
+    <script src="js/sweetalert2.js" ></script>
     <link rel="shortcut icon" href="img/studentmeets_4873.ico" />
 </head>
 <body>
@@ -105,8 +108,10 @@
                         break;
                 }                
                 echo "<td>
-                         <a class='btn btn-primary' href='#' role='button'>Editar</a>&nbsp;
-                         <a class='btn btn-danger'  href='#' role='button'>Excluir</a>
+                         <a class='btn btn-primary' href='usuarios_edit.php?idUsuario=$rows[0]' 
+                          role='button'>Editar</a>&nbsp;
+                         <a class='btn btn-danger'  href='javascript:excluirUsuario($rows[0])'
+                          role='button'>Excluir</a>
                       </td>";
                 echo "</tr>";
             }
@@ -114,6 +119,29 @@
             ?>
         </tbody>
     </table>
-
+    <a class="btn btn-lg btn-primary" href="usuarios_edit.php?idUsuario=0" 
+    role="button">Novo usuário</a>
+    <script type="text/javascript">
+        function excluirUsuario(idUsuario){
+            /*var resp = confirm('Deseja realmente excluir este usuário?');
+            if(resp == true)
+                window.location.href = "usuarios_excluir.php?idUsuario=" + idUsuario;
+            */
+            Swal.fire({
+                title: 'Deseja realmente exluir?',
+                text: "Você deseja realmente excluir este usuário!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'SIM',
+                cancelButtonText: 'NÃO'
+                }).then((result) => {
+                if (result.value) {
+                    window.location.href = "usuarios_excluir.php?idUsuario=" + idUsuario;
+                }
+            })
+        }
+    </script>
 </body>
 </html>
