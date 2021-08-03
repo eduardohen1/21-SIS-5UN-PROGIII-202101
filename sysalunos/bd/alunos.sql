@@ -22,6 +22,71 @@ CREATE DATABASE IF NOT EXISTS alunos;
 USE alunos;
 
 --
+-- Definition of table `alunos`
+--
+
+DROP TABLE IF EXISTS `alunos`;
+CREATE TABLE `alunos` (
+  `idalunos` int(10) unsigned NOT NULL auto_increment,
+  `matricula` varchar(45) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `dt_nascimento` date NOT NULL,
+  `dt_cadastro` date NOT NULL,
+  PRIMARY KEY  (`idalunos`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `alunos`
+--
+
+/*!40000 ALTER TABLE `alunos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `alunos` ENABLE KEYS */;
+
+
+--
+-- Definition of table `materias`
+--
+
+DROP TABLE IF EXISTS `materias`;
+CREATE TABLE `materias` (
+  `idmaterias` int(10) unsigned NOT NULL auto_increment,
+  `nome` varchar(45) NOT NULL,
+  `periodo` varchar(10) NOT NULL,
+  `carga_horaria` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`idmaterias`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `materias`
+--
+
+/*!40000 ALTER TABLE `materias` DISABLE KEYS */;
+INSERT INTO `materias` (`idmaterias`,`nome`,`periodo`,`carga_horaria`) VALUES 
+ (1,'ProgramaÃ§Ã£o III','1o de 2021',72);
+/*!40000 ALTER TABLE `materias` ENABLE KEYS */;
+
+
+--
+-- Definition of table `materiasporalunos`
+--
+
+DROP TABLE IF EXISTS `materiasporalunos`;
+CREATE TABLE `materiasporalunos` (
+  `idalunos` int(10) unsigned NOT NULL auto_increment,
+  `idmaterias` int(10) unsigned NOT NULL,
+  `ano` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`idalunos`,`idmaterias`,`ano`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `materiasporalunos`
+--
+
+/*!40000 ALTER TABLE `materiasporalunos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `materiasporalunos` ENABLE KEYS */;
+
+
+--
 -- Definition of table `usuarios`
 --
 

@@ -10,22 +10,24 @@
     <link rel="shortcut icon" href="img/studentmeets_4873.ico" />
 </head>
 <body class="text-center">
-    <form class="form-signin"
-          method="post"
-          action="redirect.php">
-        <img 
-            class="mb-4" 
-            src="img/studentmeets_4873.png" 
-            alt="SysAlunos" 
-            width="80" height="80">
+    <div class="container">
+        <form class="form-signin"
+            method="post"
+            action="redirect.php">
+            <img 
+                class="mb-4" 
+                src="img/studentmeets_4873.png" 
+                alt="SysAlunos" 
+                width="80" height="80">
+                <div class="mb-3">
+            <label for="txtEmail" class="form-label">Endereço de e-mail</label>
+            <input type="email" class="form-control" id="txtEmail" name="txtEmail" >
             <div class="mb-3">
-        <label for="txtEmail" class="form-label">Endereço de e-mail</label>
-        <input type="email" class="form-control" id="txtEmail" name="txtEmail" >
-        <div class="mb-3">
-            <label for="txtSenha" class="form-label">Senha:</label>
-            <input type="password" class="form-control" id="txtSenha" name="txtSenha">
-        </div>
-        <button type="submit" class="btn btn-lg btn-primary">Entrar</button>
-    </form>
+                <label for="txtSenha" class="form-label">Senha:</label>
+                <input type="password" class="form-control" id="txtSenha" name="txtSenha">
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary">Entrar</button>
+        </form>
+    </div>
 </body>
 </html>

@@ -8,7 +8,7 @@
     $tipoAcesso = $_SESSION["tipo_acesso"];
 
     //recuperar id de usuário
-    $idUsuario = $_GET["idUsuario"];
+    $idMateria = $_GET["idMateria"];
 
     //validar se o código do usuário está na sessão:
     if(strlen($id_usuario) == 0){
@@ -61,7 +61,7 @@
                                 <ul class='dropdown-menu aria-labelledby='mnuCadastroDown'>
                                 <li><a class='dropdown-item' href='usuarios_list.php'>Cadastro de usuários</a></li>
                                 <li><a class='dropdown-item' href='#'>Cadastro de alunos</a></li>
-                                <li><a class='dropdown-item' href='materias_list.php'>Cadastro de matérias</a></li>
+                                <li><a class='dropdown-item' href='#'>Cadastro de matérias</a></li>
                                 <li><hr class='dropdown-divider'></li>
                                 <li><a class='dropdown-item' href='#'>Cadastro de materias por alunos</a></li>
                                 </ul>
@@ -88,84 +88,50 @@
         </nav>
         <?php     
             //Variáveis
-            $NomeUsuario = "";
-            $Email       = "";
-            $Senha       = "";
-            $Dica        = "";
-            $TipoAcesso  = "";
+            $NomeMateria  = "";
+            $Periodo      = "";
+            $CargaHoraria = "";
             
-            if($idUsuario == 0) {
-            //novo usuario
-            echo "<h1>Novo usuário:</h1>";
+            if($idMateria == 0) {
+                //novo usuario
+                echo "<h1>Nova matéria:</h1>";
             }else{
             //editar usuario
-                echo "<h1>Editar usuário:</h1>";
-                $sql = "SELECT nome, email, senha, dica, tipoacesso 
-                        FROM usuarios WHERE idusuarios = $idUsuario";
+                echo "<h1>Editar matéria:</h1>";
+                $sql = "SELECT nome, periodo, carga_horaria 
+                        FROM materias WHERE idmaterias = $idMateria";
                 $resp = mysqli_query($conexao_bd, $sql);
                 if($rows=mysqli_fetch_row($resp)){
-                    $NomeUsuario = $rows[0];
-                    $Email       = $rows[1];
-                    $SEnha       = $rows[2];
-                    $Dica        = $rows[3];
-                    $TipoAcesso  = $rows[4];
+                    $NomeMateria  = $rows[0];
+                    $Periodo      = $rows[1];
+                    $CargaHoraria = $rows[2];
                 }
                 mysqli_close($conexao_bd);
             }
         ?>
-        <form class="row g-3" method="post" action="usuarios_gravar.php">
+        <form class="row g-3" method="post" action="materias_gravar.php">
             <?php
-                echo "<input type='hidden' id='txtIdUsuario' name='txtIdUsuario'
-                        value='$idUsuario'>";
+                echo "<input type='hidden' id='txtIdMaterias' name='txtIdMaterias'
+                        value='$idMateria'>";
             ?>
             <div class="col-12">
-                <label for="txtNome" class="form-label">Nome do usuário:</label>
+                <label for="txtNome" class="form-label">Nome da matéria:</label>
                 <input type="text" class="form-control" id="txtNome" name="txtNome" 
-                placeholder="Nome do usuário" value="<?php echo $NomeUsuario; ?>">
+                placeholder="Nome da matéria" value="<?php echo $NomeMateria; ?>">
             </div>
             <div class="col-md-6">
-                <label for="txtEmail" class="form-label">E-mail:</label>
-                <input type="email" class="form-control" id="txtEmail" name="txtEmail"
-                placeholder="nome@nome.com" value="<?php echo $Email; ?>">
+                <label for="txtPeriodo" class="form-label">Período:</label>
+                <input type="text" class="form-control" id="txtPeriodo" name="txtPeriodo"
+                placeholder="1° de 2021" value="<?php echo $Periodo; ?>">
             </div>
             <div class="col-md-3">
-                <label for="txtSenha" class="form-label">Senha:</label>
-                <input type="password" class="form-control" id="txtSenha" name="txtSenha"
-                value="<?php echo $Senha; ?>">
-            </div>        
-            <div class="col-3">
-                <label for="txtDica" class="form-label">Dica:</label>
-                <input type="text" class="form-control" id="txtDica" name="txtDica"
-                    placeholder="Dica da senha" value="<?php echo $Dica; ?>">
-            </div>
-            <div class="col-md-4">
-                <label for="chkTipoAcesso" class="form-label">Tipo de acesso:</label>
-                <select id="chkTipoAcesso" class="form-select" name="chkTipoAcesso">
-                    <?php
-                    if($idUsuario == 0) {
-                        echo "<option value='X' selected>Selecione uma opção</option>";
-                        echo "<option value='0' >Administrador</option>";
-                        echo "<option value='1' >Consultas</option>";
-                        echo "<option value='2' >Relatórios</option>";
-                    }else{
-                        $selected[0] = "";
-                        $selected[1] = "";
-                        $selected[2] = "";
-                        switch($TipoAcesso){
-                            case 0: $selected[0] = "selected"; break;
-                            case 1: $selected[1] = "selected"; break;
-                            case 2: $selected[2] = "selected"; break;
-                        }
-                        echo "<option value='0' $selected[0]>Administrador</option>";
-                        echo "<option value='1' $selected[1]>Consultas</option>";
-                        echo "<option value='2' $selected[2]>Relatórios</option>";
-                    }
-                    ?>
-                </select>
-            </div>
+                <label for="txtCargaHoraria" class="form-label">Carga horária:</label>
+                <input type="number" class="form-control" id="txtCargaHoraria" name="txtCargaHoraria"
+                value="<?php echo $CargaHoraria; ?>">
+            </div>                    
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Gravar</button>
-                <a class="btn btn-warning" href="usuarios_list.php" 
+                <a class="btn btn-warning" href="materias_list.php" 
                     role="button">Cancelar</a>
             </div>
         </form>

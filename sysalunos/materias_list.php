@@ -86,41 +86,31 @@
                 </div>
             </div>
         </nav>
-        <h1>Listagem de usuários:</h1>
+        <h1>Listagem de matérias:</h1>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Tipo de acesso</th>
+                    <th scope="col">Período</th>
+                    <th scope="col">Carga horária</th>
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $sql = "SELECT idusuarios, nome, email, tipoacesso FROM usuarios ORDER BY nome";
+                $sql = "SELECT idmaterias, nome, periodo, carga_horaria FROM materias ORDER BY nome";
                 $resp = mysqli_query($conexao_bd, $sql);
                 while($rows=mysqli_fetch_row($resp)){
                     echo "<tr>";
                     echo "<th scope='row'>$rows[0]</th>";
                     echo "<td>$rows[1]</td>";
                     echo "<td>$rows[2]</td>";
-                    switch($rows[3]){
-                        case 0: 
-                            echo "<td>Administrador</td>";
-                            break;
-                        case 1:
-                            echo "<td>Consultas</td>";
-                            break;
-                        case 2:
-                            echo "<td>Relatórios</td>";
-                            break;
-                    }                
+                    echo "<td>$rows[3]</td>";
                     echo "<td>
-                            <a class='btn btn-primary' href='usuarios_edit.php?idUsuario=$rows[0]' 
+                            <a class='btn btn-primary' href='materias_edit.php?idMateria=$rows[0]' 
                             role='button'>Editar</a>&nbsp;
-                            <a class='btn btn-danger'  href='javascript:excluirUsuario($rows[0])'
+                            <a class='btn btn-danger'  href='javascript:excluirMateria($rows[0])'
                             role='button'>Excluir</a>
                         </td>";
                     echo "</tr>";
@@ -129,18 +119,14 @@
                 ?>
             </tbody>
         </table>
-        <a class="btn btn-lg btn-primary" href="usuarios_edit.php?idUsuario=0" 
-        role="button">Novo usuário</a>
+        <a class="btn btn-lg btn-primary" href="materias_edit.php?idMateria=0" 
+        role="button">Nova matéria</a>
 </div>
     <script type="text/javascript">
-        function excluirUsuario(idUsuario){
-            /*var resp = confirm('Deseja realmente excluir este usuário?');
-            if(resp == true)
-                window.location.href = "usuarios_excluir.php?idUsuario=" + idUsuario;
-            */
+        function excluirMateria(idMateria){
             Swal.fire({
                 title: 'Deseja realmente exluir?',
-                text: "Você deseja realmente excluir este usuário?",
+                text: "Você deseja realmente excluir esta matéria?",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -149,7 +135,7 @@
                 cancelButtonText: 'NÃO'
                 }).then((result) => {
                 if (result.value) {
-                    window.location.href = "usuarios_excluir.php?idUsuario=" + idUsuario;
+                    window.location.href = "materias_excluir.php?idMateria=" + idMateria;
                 }
             })
         }
