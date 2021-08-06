@@ -1,0 +1,28 @@
+@model IEnumerable<alunosPage.Models.Alunos>
+@{
+    ViewData["Title"] = "Teste de página";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Testando a página Teste.</p>
+<div class="container">
+    <table class="table table-striped">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.idalunos)</th>
+            <th>@Html.DisplayNameFor(model => model.nome)</th>
+            <th>@Html.DisplayNameFor(model => model.matricula)</th>
+            <th>@Html.DisplayNameFor(model => model.dt_nascimento)</th>
+            <th>@Html.DisplayNameFor(model => model.dt_cadastro)</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.idalunos)</td>
+                <td>@Html.DisplayFor(modelItem => item.nome)</td>
+                <td>@Html.DisplayFor(modelItem => item.matricula)</td>
+                <td>@Html.DisplayFor(modelItem => item.dt_nascimento)</td>
+                <td>@Html.DisplayFor(modelItem => item.dt_cadastro)</td>
+            </tr>
+        }
+    </table>
+</div>
