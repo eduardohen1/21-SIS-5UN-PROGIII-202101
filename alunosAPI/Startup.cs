@@ -34,6 +34,10 @@ namespace alunosAPI
                 options => options.UseMySql(connection)
             );
             services.AddTransient<IPessoaRepository, PessoaRepository>();
+            services.AddDbContext<MateriaDbContext>(
+                options => options.UseMySql(connection)
+            );
+            services.AddTransient<IMateriaRepository, MateriaRepository>();
             services.AddControllers();
 
             services.AddSwaggerGen(c =>
