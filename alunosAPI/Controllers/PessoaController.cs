@@ -42,5 +42,30 @@ namespace alunosAPI.Controllers
             return CreatedAtRoute("GetPessoa", new{idpessoas = pessoa.idpessoas},pessoa);
         }
 
+        [HttpPut]
+        public IActionResult Update([FromBody] Pessoa pessoa){
+            var pessoaUpdate = pessoaRepository.Find(pessoa.idpessoas);
+            if(pessoaUpdate == null)
+                return NotFound(); //404
+            if(pessoa == null || pessoaUpdate.idpessoas != pessoa.idpessoas)
+                return BadRequest(); //400
+            //regra de negócio:
+            //atualizar nome, idade, cpf
+            pessoaUpdate.nome  = pessoa.nome;
+            pessoaUpdate.idade = pessoa.idade;
+            pessoaUpdate.cpf   = pessoa.cpf;
+            pessoaRepository.Update(pessoaUpdate);
+            return new NoContentResult(); //204
+        }
+
+        [HttpDelete("{idpessoas}")]
+        public IActionResult Delete(long idpessoas){
+            var pessoaDelete = pessoaRepository.Find(idpessoas);
+            if(pessoaDelete == null)
+                return NotFound(); //404
+            pessoaRepository.Remove(idpessoas);
+            return new NoContentResult(); //204
+        }
+
     }
 }
