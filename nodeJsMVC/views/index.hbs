@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula NodeJS MVC</title>    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">NodeJS MVC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sobre">Sobre</a>
+                    </li>                
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <form action="/" method="POST">
+        <div class="mb-3">
+            <label for="valor1" class="form-label">Valor 1:</label>
+            <input type="number" class="form-control" 
+                id="valor1" name="valor1">            
+        </div>
+        <div class="mb-3">
+            <label for="valor2" class="form-label">Valor 2</label>
+            <input type="number" class="form-control" 
+                id="valor2" name="valor2">
+        </div>
+        <div class="mb-3">
+            <label for="valor2" class="form-label">Resultado:</label>
+            <input type="text" class="form-control" 
+                value="{{results}}"
+                id="resultado" name="resultado" disabled>
+        </div>
+        <button type="submit" class="btn btn-primary">Somar</button>
+        <div>
+            {{error}}
+        </div>
+        </form>
+</body>
+</html>
